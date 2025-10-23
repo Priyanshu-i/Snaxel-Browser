@@ -15,6 +15,9 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Railway provides a dynamic port
+console.log('Port from environment:', process.env.PORT);
+
 // Middleware
 app.use(helmet({
   contentSecurityPolicy: {
@@ -65,14 +68,14 @@ app.use((req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`
-╔═════════════════════════════════════════════════════════╗
-║   🚀 Snaxel Multimedia Browser                          ║
-║   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
-║   Server running on: http://localhost:${PORT}           ║
+╔═══════════════════════════════════════════════════╗
+║   🚀 Snaxel Multimedia Browser                    ║
+║   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  ║
+║   Server running on: http://localhost:${PORT}      ║
 ║   Environment: ${process.env.NODE_ENV || 'development'}                       ║
-║                                                         ║
-║   Ready to search! 🔍                                   ║
-╚═════════════════════════════════════════════════════════╝
+║                                                   ║
+║   Ready to search! 🔍                            ║
+╚═══════════════════════════════════════════════════╝
   `);
 });
 
