@@ -1,8 +1,39 @@
 [phases.setup]
-nixPkgs = ['nodejs_20', 'chromium']
+nixPkgs = [
+  'nodejs_20',
+  'chromium',
+  'nss',
+  'freetype',
+  'harfbuzz',
+  'ttf-bitstream-vera',
+  'ca-certificates',
+  'fontconfig',
+  'glib',
+  'gtk3',
+  'atk',
+  'pango',
+  'cairo',
+  'gdk-pixbuf',
+  'libdrm',
+  'libxkbcommon',
+  'xorg.libX11',
+  'xorg.libxcb',
+  'xorg.libXcomposite',
+  'xorg.libXdamage',
+  'xorg.libXext',
+  'xorg.libXfixes',
+  'xorg.libXrandr',
+  'mesa',
+  'expat',
+  'alsa-lib',
+  'at-spi2-atk',
+  'at-spi2-core',
+  'dbus',
+  'cups'
+]
 
 [phases.install]
-cmds = ['npm install']
+cmds = ['npm ci --only=production']
 
 [start]
 cmd = 'node server.js'

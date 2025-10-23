@@ -6,10 +6,30 @@ import {
   getNewsResults,
   getBookResults,
   queryAllSources,
-  summarizeResults
+  summarizeResults,
+  CONFIG
 } from 'snaxel-query-engine';
 
 const router = express.Router();
+
+// Configure Puppeteer for production environment
+if (process.env.NODE_ENV === 'production') {
+  CONFIG.puppeteerArgs = [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process',
+    '--disable-gpu'
+  ];
+  
+  // Use system chromium if available
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    CONFIG.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
+}
 
 // Health check
 router.get('/health', (req, res) => {
